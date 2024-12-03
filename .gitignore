@@ -1,5 +1,6 @@
 # Entorno virtual
 env/
+venv/
 .venv/
 
 # Archivos de configuración específicos del entorno
