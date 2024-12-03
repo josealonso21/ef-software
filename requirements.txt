@@ -1,0 +1,6 @@
+fastapi[all]
+uvicorn
+sqlalchemy
+mysql-connector-python
+pytest
+pytest-cov
