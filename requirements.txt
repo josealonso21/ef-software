@@ -1,8 +1,10 @@
 fastapi[all]
 uvicorn
-sqlalchemy
+sqlalchemy[asyncio]
+coverage
 aiomysql
 pytest
 pytest-cov
+pytest.asyncio
 python-dotenv
 loguru
