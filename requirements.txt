@@ -1,6 +1,9 @@
 fastapi[all]
 uvicorn
 sqlalchemy
-mysql-connector-python
+sqlalchemy_utils
+pymysql
+alembic
 pytest
 pytest-cov
+python-decouple
