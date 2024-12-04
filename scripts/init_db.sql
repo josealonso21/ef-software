@@ -4,8 +4,12 @@ USE ticketing_db;
 
 CREATE TABLE tickets (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    conciertoname VARCHAR(255) NOT NULL,
-    precio DECIMAL(10,2) NOT NULL,
-    status VARCHAR(20) NOT NULL DEFAULT 'available'
+    event_name VARCHAR(255),
+    status VARCHAR(20) DEFAULT 'available',
+    user_id INT DEFAULT NULL
 );
 
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
