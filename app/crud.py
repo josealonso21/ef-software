@@ -14,3 +14,21 @@ async def update_ticket_status(db: AsyncSession, ticket_id: int, status: str, us
         await db.commit()
         await db.refresh(ticket)
     return ticket
+
+async def buy_ticket(db: AsyncSession, ticket_id: int, user_id: int):
+    ticket = await get_ticket_by_id(db, ticket_id)
+    if not ticket or ticket.status != "available":
+        return None
+    return await update_ticket_status(db, ticket_id, "sold", user_id=user_id)
+
+async def reserve_ticket(db: AsyncSession, ticket_id: int, user_id: int):
+    ticket = await get_ticket_by_id(db, ticket_id)
+    if not ticket or ticket.status != "available":
+        return None
+    return await update_ticket_status(db, ticket_id, "reserved", user_id=user_id)
+
+async def cancel_reservation(db: AsyncSession, ticket_id: int):
+    ticket = await get_ticket_by_id(db, ticket_id)
+    if not ticket or ticket.status not in ["reserved", "sold"]:
+        return None
+    return await update_ticket_status(db, ticket_id, "available")
